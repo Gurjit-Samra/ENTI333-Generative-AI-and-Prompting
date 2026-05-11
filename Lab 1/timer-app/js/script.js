@@ -25,6 +25,7 @@ const starCountInput = document.getElementById("starCountInput");
 const burstSpeedInput = document.getElementById("burstSpeedInput");
 const spreadInput = document.getElementById("spreadInput");
 const colorPreview = document.getElementById("colorPreview");
+const endSound = document.getElementById("endSound");
 
 let totalSeconds = 25 * 60;
 let remainingSeconds = totalSeconds;
@@ -35,6 +36,27 @@ function clamp(value, min, max) {
   const number = Number(value);
   if (Number.isNaN(number)) return min;
   return Math.min(Math.max(Math.floor(number), min), max);
+}
+
+function playEndSound() {
+  if (!endSound) return;
+
+  endSound.currentTime = 0;
+
+  const playPromise = endSound.play();
+
+  if (playPromise !== undefined) {
+    playPromise.catch(() => {
+      modeLabel.textContent = "Complete";
+    });
+  }
+}
+
+function stopEndSound() {
+  if (!endSound) return;
+
+  endSound.pause();
+  endSound.currentTime = 0;
 }
 
 function createStarBurst(x, y) {
@@ -124,6 +146,8 @@ function setRunningState(running) {
 }
 
 function startTimer() {
+  stopEndSound();
+
   if (isRunning) return;
 
   if (remainingSeconds <= 0) {
@@ -160,6 +184,7 @@ function pauseTimer() {
 }
 
 function resetTimer() {
+  stopEndSound();
   clearInterval(timerId);
   timerId = null;
   remainingSeconds = totalSeconds;
@@ -169,6 +194,7 @@ function resetTimer() {
 }
 
 function clearTimer() {
+  stopEndSound();
   clearInterval(timerId);
   timerId = null;
   totalSeconds = 0;
