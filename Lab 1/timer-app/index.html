@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Timer</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <main class="app" aria-label="Space Timer App">
+    <section class="hero">
+      <div class="badge" aria-live="polite">
+        <span class="badge-dot"></span>
+        <span id="modeLabel">Ready</span>
+      </div>
+      <h1>Timer</h1>
+      <p class="subtitle">Set a custom countdown, use a preset, and launch a colorful star burst anywhere you click across the cosmic background.</p>
+    </section>
+
+    <section class="timer-panel">
+      <div class="timer-ring" id="timerRing" role="timer" aria-live="polite">
+        <div class="timer-content">
+          <div class="time" id="timeDisplay">25:00</div>
+        </div>
+      </div>
+
+      <div class="inputs" aria-label="Timer duration inputs">
+        <div class="field">
+          <label for="hours">Hours</label>
+          <input id="hours" type="text" value="0" inputmode="numeric" />
+        </div>
+        <div class="field">
+          <label for="minutes">Minutes</label>
+          <input id="minutes" type="text" value="25" inputmode="numeric" />
+        </div>
+        <div class="field">
+          <label for="seconds">Seconds</label>
+          <input id="seconds" type="text" value="0" inputmode="numeric" />
+        </div>
+      </div>
+
+      <div class="quick-actions" aria-label="Preset timers">
+        <button class="preset" data-minutes="5">5 min</button>
+        <button class="preset" data-minutes="15">15 min</button>
+        <button class="preset" data-minutes="25">25 min</button>
+      </div>
+
+      <div class="controls">
+        <button class="btn btn-primary" id="startPauseBtn">Start</button>
+        <button class="btn btn-secondary" id="resetBtn">Reset</button>
+        <button class="btn btn-danger hidden" id="clearBtn">Clear Timer</button>
+      </div>
+
+      <p class="credit-text">This timer app was made by Gurjit Samra as a project for class at the Haskayne School of Business, University of Calgary.</p>
+
+      <div class="customizer" aria-label="Star firework customization options">
+        <p class="customizer-title">Star Firework Options</p>
+        <div class="customizer-grid">
+          <div class="field">
+            <label for="starCountInput">Stars</label>
+            <input id="starCountInput" type="text" value="22" inputmode="numeric" />
+          </div>
+          <div class="field">
+            <label for="burstSpeedInput">Speed</label>
+            <input id="burstSpeedInput" type="text" value="2000" inputmode="numeric" />
+          </div>
+          <div class="field">
+            <label for="spreadInput">Spread</label>
+            <input id="spreadInput" type="text" value="150" inputmode="numeric" />
+          </div>
+        </div>
+        <div class="color-row" id="colorPreview" aria-label="Current star colors"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
